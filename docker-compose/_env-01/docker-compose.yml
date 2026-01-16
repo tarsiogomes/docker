@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  ubunbu-server:
+    image: tarsiogomes/ubuntu:1.0
+    container_name: ctr-ubuntu-01
+    networks:
+      - HMLG
+
+  debian-server:
+    image: tarsiogomes/debian:1.0
+    container_name: ctr-debian-01
+    networks:
+      - HMLG
+
+  almalinux-server:
+    image: tarsiogomes/almalinux:1.0
+    container_name: ctr-almalinux-01
+    networks:
+      - HMLG
+
+networks:
+  HMLG:
+    driver: bridge

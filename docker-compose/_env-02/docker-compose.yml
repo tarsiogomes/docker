@@ -1,0 +1,55 @@
+version: '3.9'
+services:
+  fw-nginx-01:
+    image: nginx
+    container_name: fw-nginx-01
+    ports:
+      - "9000:80"
+    restart: always
+    networks:
+      - PROD
+
+  web-server-01:
+    image: wordpress
+    container_name: app-wp-01
+    ports:
+      - "8081:80"
+    restart: always
+    networks:
+      - PROD
+
+  web-server-02:
+    image: wordpress
+    container_name: app-wp-02
+    ports:
+      - "8082:80"
+    restart: always
+    networks:
+      - PROD
+
+  web-server-03:
+    image: wordpress
+    container_name: app-wp-03
+    ports:
+      - "8083:80"
+    restart: always
+    networks:
+      - PROD  
+
+  database-mongo:
+    image: mongo
+    container_name: db-mongo-01
+    restart: always
+    networks:
+      - PROD
+
+  database-redis:
+    image: redis
+    container_name: db-redis-01
+    restart: always
+    networks:
+      - PROD
+
+networks:
+  PROD:
+    driver: bridge
